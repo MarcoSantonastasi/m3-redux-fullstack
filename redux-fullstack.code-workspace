@@ -1,0 +1,14 @@
+{
+  "folders": [
+    {
+      "path": "express-mongo-backend"
+    },
+    {
+      "path": "react-frontend"
+    },
+    {
+      "path": "typescript-redux-react-frontend"
+    }
+  ],
+  "settings": {}
+}
