@@ -42,7 +42,11 @@ export default class ShowAssets extends Component {
               <th>action</th>
             </tr>
             {window.CS.getBMState().assets.map(asset => (
-              <SimpleAsset key={asset._id} asset={asset} edit={false} />
+              <SimpleAsset
+                key={asset._id}
+                asset={asset}
+                edit={!asset.asset_name && !asset.asset_value ? true : false}
+              />
             ))}
           </tbody>
         </table>
