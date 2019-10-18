@@ -156,27 +156,30 @@ export default class SimpleAsset extends React.PureComponent<
         "http://localhost:8080/assets/update/" + IdOfAssetToUpdate,
         this.props.asset
       )
-      .then(res => console.log(res.data))
+      .then(res => {
+        console.log(res.data);
+        this.setState({ edit_mode: false });
+      })
       .catch(error =>
         console.log("Error: ", error, "while saving asset", this.props.asset)
       );
-
-    this.setState({ edit_mode: false });
   }
   handleDelete(event: any) {
-    const IdOfAssetToDelete = this.props.asset._id;
+    const IdOfAssetToDelete = event.target.id;
 
-    axios
-      .delete("http://localhost:8080/assets/delete/" + IdOfAssetToDelete)
-      .then(res => console.log(res.data))
-      .catch(error =>
-        console.log("Error: ", error, "while saving asset", this.props.asset)
-      );
     const action: IAssetAction = {
       type: ActionType.delete_asset,
       asset: this.props.asset
     };
-    window.CS.clientAction(action);
+    axios
+      .delete("http://localhost:8080/assets/delete/" + IdOfAssetToDelete)
+      .then(res => {
+        console.log(res.data);
+        window.CS.clientAction(action);
+      })
+      .catch(error =>
+        console.log("Error: ", error, "while deleting asset", this.props.asset)
+      );
   }
   handleRerenderTest(event: any) {
     const action: IAction = {

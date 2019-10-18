@@ -68,10 +68,10 @@ assetRoutes.route("/update/:id").post(function(req, res) {
 
 //D: delete the asset with the given id
 
-assetRoutes.route("/delete/:id").get(function(req, res) {
-  Asset.deleteOne({ _id: req.params.id }, function(err, asset) {
-    if (!asset) res.status(404).send("data is not found");
-    else res.json("asset deleted!", req.params.id);
+assetRoutes.route("/delete/:id").delete(function(req, res) {
+  Asset.deleteOne({ _id: req.params.id }, function(err) {
+    if (err) res.status(404).send("data is not found");
+    else res.status(200).json("asset deleted!");
   });
 });
 
