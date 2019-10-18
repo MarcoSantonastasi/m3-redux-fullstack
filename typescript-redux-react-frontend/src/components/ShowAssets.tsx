@@ -45,7 +45,7 @@ export default class ShowAssets extends Component {
               <SimpleAsset
                 key={asset._id}
                 asset={asset}
-                edit={!asset.asset_name && !asset.asset_value ? true : false}
+                edit={!asset.asset_name && !asset.asset_value}
               />
             ))}
           </tbody>

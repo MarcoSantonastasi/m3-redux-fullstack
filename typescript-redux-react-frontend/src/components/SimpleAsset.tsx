@@ -102,7 +102,7 @@ export default class SimpleAsset extends React.PureComponent<
               Save changes
             </button>
             <button onClick={this.handleRerenderTest}>
-              Increase State Counter
+              Increase State Counter {window.CS.getUIState().counter}
             </button>
           </td>
         </tr>
